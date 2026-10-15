@@ -1,0 +1,18 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "React app dev server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"--prefix",
+				"react-app",
+				"run",
+				"dev"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
