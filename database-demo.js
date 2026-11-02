@@ -1,15 +1,18 @@
 const mongoose = require('mongoose');
-
-// 1. Connect to MongoDB (Local or Atlas URI)
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/native-plant-app';
+const { MongoMemoryServer } = require('mongodb-memory-server');
 
 async function runDatabaseOperations() {
+    let mongoServer;
     try {
+        // 1. Spin up an in-memory MongoDB instance automatically
+        mongoServer = await MongoMemoryServer.create();
+        const MONGO_URI = mongoServer.getUri();
+
         // Connect to MongoDB
         await mongoose.connect(MONGO_URI);
-        console.log('Connected to MongoDB database successfully!');
+        console.log('Connected to In-Memory MongoDB database successfully!');
 
-        // 2. Create Schema & Collection Model matching required fields
+        // 2. Create Schema & Collection Model matching all required fields
         const plantSchema = new mongoose.Schema({
             name: { type: String, required: true },
             scientificName: { type: String, required: true },
@@ -103,8 +106,12 @@ async function runDatabaseOperations() {
     } catch (err) {
         console.error('Database operation error:', err);
     } finally {
+        // Close connection and stop the in-memory server
         await mongoose.connection.close();
-        console.log('\nDatabase connection closed.');
+        if (mongoServer) {
+            await mongoServer.stop();
+        }
+        console.log('\nDatabase connection closed and memory server stopped.');
     }
 }
 
