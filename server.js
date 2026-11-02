@@ -8,11 +8,24 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// In-Memory Data Store for Native Plant App
+// In-Memory Data Store for Native Plant App (15+ objects required for Homework #10)
 let plants = [
     { id: 1, name: 'Purple Coneflower', scientificName: 'Echinacea purpurea', sunlight: 'Full Sun', bloomSeason: 'Summer' },
     { id: 2, name: 'Butterfly Weed', scientificName: 'Asclepias tuberosa', sunlight: 'Full Sun', bloomSeason: 'Summer' },
-    { id: 3, name: 'Wild Bergamot', scientificName: 'Monarda fistulosa', sunlight: 'Full Sun to Part Shade', bloomSeason: 'Summer' }
+    { id: 3, name: 'Wild Bergamot', scientificName: 'Monarda fistulosa', sunlight: 'Full Sun to Part Shade', bloomSeason: 'Summer' },
+    { id: 4, name: 'Black-Eyed Susan', scientificName: 'Rudbeckia hirta', sunlight: 'Full Sun', bloomSeason: 'Summer' },
+    { id: 5, name: 'Joe Pye Weed', scientificName: 'Eutrochium purpureum', sunlight: 'Full Sun to Part Shade', bloomSeason: 'Late Summer' },
+    { id: 6, name: 'New England Aster', scientificName: 'Symphyotrichum novae-angliae', sunlight: 'Full Sun to Part Shade', bloomSeason: 'Fall' },
+    { id: 7, name: 'Cardinal Flower', scientificName: 'Lobelia cardinalis', sunlight: 'Part Shade to Full Shade', bloomSeason: 'Summer' },
+    { id: 8, name: 'Common Milkweed', scientificName: 'Asclepias syriaca', sunlight: 'Full Sun', bloomSeason: 'Summer' },
+    { id: 9, name: 'Anise Hyssop', scientificName: 'Agastache foeniculum', sunlight: 'Full Sun to Part Shade', bloomSeason: 'Summer' },
+    { id: 10, name: 'Blue Flag Iris', scientificName: 'Iris versicolor', sunlight: 'Full Sun to Part Shade', bloomSeason: 'Spring' },
+    { id: 11, name: 'Switchgrass', scientificName: 'Panicum virgatum', sunlight: 'Full Sun', bloomSeason: 'Fall' },
+    { id: 12, name: 'Blazing Star', scientificName: 'Liatris spicata', sunlight: 'Full Sun', bloomSeason: 'Summer' },
+    { id: 13, name: 'Foxglove Beardtongue', scientificName: 'Penstemon digitalis', sunlight: 'Full Sun to Part Shade', bloomSeason: 'Spring' },
+    { id: 14, name: 'Turtlehead', scientificName: 'Chelone glabra', sunlight: 'Part Shade', bloomSeason: 'Late Summer' },
+    { id: 15, name: 'Columbine', scientificName: 'Aquilegia canadensis', sunlight: 'Part Shade to Full Shade', bloomSeason: 'Spring' },
+    { id: 16, name: 'Goldenrod', scientificName: 'Solidago odora', sunlight: 'Full Sun', bloomSeason: 'Fall' }
 ];
 
 // 1. GET /plants - Retrieve all plants
